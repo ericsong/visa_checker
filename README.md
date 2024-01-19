@@ -23,6 +23,15 @@ This program was designed for US Visa renewals with appointments
 in Canada. I don't know if the visa site works the same way for 
 appointments in other countries. I imagine they probably do.
 
+### Requirements
+- [ntfy](https://ntfy.sh/) topic (configured in config.py)
+- postgresql db (configured in config.py)
+- poetry
+
+### Install/Run
+1. `poetry install`
+2. `poetry run python visa_checker/main.py`
+
 ### Features
 - Specify which cities to track (eg. only Toronto and Vancouver)
 - Notifications when new appointment slots are detected through [ntfy](https://ntfy.sh/)
