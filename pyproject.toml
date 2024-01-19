@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "visa-checker"
+version = "0.1.0"
+description = ""
+authors = ["Eric Song <eric.hjoon.song@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+apscheduler = "^3.10.4"
+playwright = "^1.41.0"
+psycopg2 = "^2.9.9"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.12.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
