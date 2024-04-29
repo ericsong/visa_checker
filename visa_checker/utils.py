@@ -56,6 +56,7 @@ def check_availability_for_city(page_wrapper: VisaPageWrapper, city: City):
 
     try:
         current_dates = page_wrapper.get_available_dates_for_city(city)
+        print(f'{city} dates - {current_dates}')
     except (
         UnauthorizedError,
         TempBannedError,

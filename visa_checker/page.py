@@ -144,7 +144,7 @@ class VisaPageWrapper:
                 f" {response_city_id}. Matching city {response_city.name}."
             )
 
-            if response_city is not city:
+            if response_city.id is not city.id:
                 logging.warning(
                     f"Requested {city.name} but found response for {response_city.name}"
                 )

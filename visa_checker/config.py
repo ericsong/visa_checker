@@ -15,10 +15,10 @@ CITIES = {
     id: City(name=name, id=id, skip=skip)
     for name, id, skip in [
         ("Calgary", "89", False),
-        ("Halifax", "90", True),
-        ("Montreal", "91", True),
+        ("Halifax", "90", False),
+        ("Montreal", "91", False),
         ("Ottawa", "92", False),
-        ("Quebec City", "93", True),
+        ("Quebec City", "93", False),
         ("Toronto", "94", False),
         ("Vancouver", "95", False),
     ]

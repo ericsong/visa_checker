@@ -48,17 +48,11 @@ def is_preferred_date(
     define the logic I wanted as code.
     """
 
-    if proposed_date < datetime.datetime(year=2023, month=1, day=1):
-        return False
-
     if is_between_dates(
-        start=datetime.datetime(year=2023, month=2, day=1),
-        end=datetime.datetime(year=2023, month=3, day=5),
+        start=datetime.datetime(year=2024, month=6, day=11),
+        end=datetime.datetime(year=2023, month=7, day=5),
         query=proposed_date,
     ):
-        return False
+        return True
 
-    if proposed_date >= current_date:
-        return False
-
-    return True
+    return False
