@@ -15,7 +15,7 @@ from visa_checker.page import VisaPageWrapper
 work_queue: list[City] = []
 
 
-def start_session():
+def start_session(headed: bool):
     """
     Starts a browser session which logs in and starts processing jobs from the
     work_queue. Each job means querying a city for its available dates and performing
@@ -31,7 +31,7 @@ def start_session():
     logging.info("Starting a new tracking browser session")
 
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False)
+        browser = p.firefox.launch(headless=not headed)
 
         page_wrapper = VisaPageWrapper(browser.new_page())
         page_wrapper.sign_in()
@@ -70,6 +70,7 @@ def add_jobs():
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--log", default='log.txt')
+    parser.add_argument("--headed", default=False)
     return parser.parse_args()
 
 
@@ -94,4 +95,4 @@ if __name__ == "__main__":
     scheduler.start()
 
     while True:
-        start_session()
+        start_session(args.headed)
