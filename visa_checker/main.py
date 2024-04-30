@@ -15,7 +15,7 @@ from visa_checker.page import VisaPageWrapper
 work_queue: list[City] = []
 
 
-def start_session(headed: bool):
+def start_session(headed: bool, one_cycle: bool):
     """
     Starts a browser session which logs in and starts processing jobs from the
     work_queue. Each job means querying a city for its available dates and performing
@@ -48,6 +48,10 @@ def start_session(headed: bool):
                 except AvailabilityCheckError as e:
                     work_queue.append(city)
                     continue
+            else:
+                if one_cycle:
+                    logging.info("Finished running one cycle of checks and returning")
+                    return
 
             # Just a small delay to prevent the loop from being run too
             # frequently when the work_queue is empty
@@ -71,6 +75,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--log", default='log.txt')
     parser.add_argument("--headed", default=False)
+    parser.add_argument("--one-cycle", default=False)
     return parser.parse_args()
 
 
@@ -95,4 +100,4 @@ if __name__ == "__main__":
     scheduler.start()
 
     while True:
-        start_session(args.headed)
+        start_session(args.headed, args.one_cycle)
