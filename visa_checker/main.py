@@ -51,7 +51,7 @@ def start_session(headed: bool, one_cycle: bool):
             else:
                 if one_cycle:
                     logging.info("Finished running one cycle of checks and returning")
-                    return
+                    exit(1)
 
             # Just a small delay to prevent the loop from being run too
             # frequently when the work_queue is empty
@@ -74,8 +74,8 @@ def add_jobs():
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--log", default='log.txt')
-    parser.add_argument("--headed", default=False)
-    parser.add_argument("--one-cycle", default=False)
+    parser.add_argument("--headed", action=argparse.BooleanOptionalAction)
+    parser.add_argument("--one-cycle", action=argparse.BooleanOptionalAction)
     return parser.parse_args()
 
 

@@ -41,7 +41,10 @@ def process_availability_for_city(city_id: str, current_dates: set[str]):
         msg = "\n".join(formatted_dates)
 
         send_notification(title=title, msg=msg)
+        send_notification(title=title, msg='test message')
         logging.info(f"Sent notification - {title} - {msg}")
+        logging.info(title)
+        logging.info(msg)
     else:
         logging.info(f"No new dates for {city.name}")
 
